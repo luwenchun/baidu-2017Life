@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>雪碧图及其伪元素的使用</title>
+    <style>
+    form input{
+        display: none;
+    }
+    input[type="radio"]:checked+label:before{
+        background-position: -59px -10px;
+    }
+    form label:before{
+        content:"";
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background: url("sprite.png")no-repeat;
+        background-position: -24px -10px;
+    }
+     label[for="apple1"]:after{
+         content: "苹果";
+         color: red;
+     }
+    label[for="apple2"]:after{
+        content: "葡萄";
+        color: black;
+    }
+    label[for="apple3"]:after{
+        content: "香蕉";
+        color: green;
+    }
+    label[for="apple4"]:after{
+        content: "其他";
+        color: blue;
+    }
+    /*.sprite{*/
+        /*display: inline-block;*/
+        /*width: 16px;*/
+        /*height: 16px;*/
+        /*background: url("sprite.png")no-repeat;*/
+    /*}*/
+    /*.sprite-crile-hover{*/
+        /*background-position: -59px -10px;*/
+    /*}*/
+    </style>
+</head>
+<body>
+<div>
+    <form action="" method="get">
+        您最喜欢水果？<br /><br />
+        <input id="apple1" name="Fruit" type="radio"  />
+        <label  for="apple1"></label>
+        <input id="apple2" name="Fruit" type="radio"  />
+        <label for="apple2"></label>
+        <input id="apple3" name="Fruit" type="radio"  />
+        <label for="apple3"> </label>
+        <input id="apple4" name="Fruit" type="radio"  />
+        <label for="apple4"></label>
+    </form>
+    <br/>
+    <!--<i class="sprite sprite-crile"></i>-->
+    <!--<i class="sprite sprite-crile-hover"></i>-->
+</div>
+</body>
+</html>
