@@ -12,10 +12,9 @@
             background: #ccc;
         }
         p{
-            padding: 20px;
+            padding: 30px;
         }
         .Menu{
-
             position: absolute;
             top: 0px;
             left: 0px;
@@ -27,6 +26,9 @@
             list-style: none;
             
         }
+        .hide{
+            display: none;
+        }
         .Menu li{
             margin-top: 10px;
             cursor: pointer;
@@ -34,35 +36,43 @@
         .Menu li:hover{
             color: #cccccc;
         }
-        .show{
-            display: block;
-        }
-        .hide{
-            display: none;
-        }
+
     </style>
 </head>
 <body>
-<div class="box"  oncontextmenu="myFunction()">
+<div class="box" id="box" oncontextmenu="myFunction()">
+    <ol class="Menu hide" id="menu">
+        <li onclick="alert(this.innerHTML)">Menu item 1</li>
+        <li onclick="alert(this.innerHTML)">Menu item 2</li>
+    </ol>
     <p>right click see me</p>
 
 </div>
-<ol class="Menu hide" id="menu">
-    <li>Menu item 1</li>
-    <li>Menu item 2</li>
-</ol>
+
 <script>
 var menu=document.getElementById("menu");
-   function myFunction(ev){
-       var ev = ev || event;
-       var x=ev.clientX;
-       var y=ev.clientY;
-       console.log(y);
-       menu.className="Menu show";
-        menu.style.top=y+"px";
-       menu.style.left=x+"px";
+       function myFunction(ev){
+           var ev = ev || event;
+           var x=ev.clientX;
+           var y=ev.clientY;
+           console.log(y);
+           menu.style.display="block";
+            menu.style.top=y+"px";
+           menu.style.left=x+"px";
+           return false;
 
-   }
+       }
+        var box=document.getElementById("box");
+            console.log(box);
+        box.onclick = function() {
+            console.log("1");
+            menu.style.display = "none";
+            
+        }
+
+
+
+
 
 </script>
 </body>
