@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            padding: 0;
+            position: relative;
+            list-style: none;
+            width: 1000px;
+            height: 550px;
+            margin: 100px auto;
+            border: 1px solid red;
+            perspective: 1000px;
+            -webkit-perspective: 1000px;
+            -moz-perspective: 1000px;
+            -ms-perspective: 1000px;
+            -o-perspective: 1000px;
+        }
+
+        ul > li {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            width: 720px;
+            height: 520px;
+            transition: all 0.7s ease;
+            -webkit-transition: all 0.7s ease;
+            -moz-transition: all 0.7s ease;
+            -ms-transition: all 0.7s ease;
+            -o-transition: all 0.7s ease;
+        }
+
+        ul > li:nth-child(1) {
+            background: url(tese-pic-3_f3d43ab.jpg) no-repeat
+        }
+
+        ul > li:nth-child(2) {
+            background: url(tese-pic-1_766f012.jpg) no-repeat
+        }
+
+        ul > li:nth-child(3) {
+            background: url(tese-pic-4_eb592d7.jpg) no-repeat
+        }
+
+        ul > li:nth-child(4) {
+            background: url(tese-pic-2_dbbe4a6.jpg) no-repeat
+        }
+
+        ul > li:nth-child(5), ul > li:nth-child(9), ul > li:nth-child(8), ul > li:nth-child(7), ul > li:nth-child(6) {
+            background: url(tese-pic-5_75fa5be.jpg) no-repeat
+        }
+
+        .left {
+            z-index: 3;
+            transform: rotateY(30deg) translateX(-200px) translateZ(-300px) scale(0.6);
+            -webkit-transform: rotateY(30deg) translateX(-200px) translateZ(-300px) scale(0.6);
+            -moz-transform: rotateY(30deg) translateX(-200px) translateZ(-300px) scale(0.6);
+            -ms-transform: rotateY(30deg) translateX(-200px) translateZ(-300px) scale(0.6);
+            -o-transform: rotateY(30deg) translateX(-200px) translateZ(-300px) scale(0.6);
+        }
+
+        .big {
+            z-index: 5;
+            transform: rotateY(0deg) translateX(0) translateZ(0px) scale(1);
+            -webkit-transform: rotateY(0deg) translateX(0) translateZ(0px) scale(1);
+            -moz-transform: rotateY(0deg) translateX(0) translateZ(0px) scale(1);
+            -ms-transform: rotateY(0deg) translateX(0) translateZ(0px) scale(1);
+            -o-transform: rotateY(0deg) translateX(0) translateZ(0px) scale(1)
+        }
+
+        .right {
+            z-index: 3;
+            transform: rotateY(-30deg) translateX(200px) translateZ(-300px) scale(0.6);
+            -webkit-transform: rotateY(-30deg) translateX(200px) translateZ(-300px) scale(0.6);
+            -moz-transform: rotateY(-30deg) translateX(200px) translateZ(-300px) scale(0.6);
+            -ms-transform: rotateY(-30deg) translateX(200px) translateZ(-300px) scale(0.6);
+            -o-transform: rotateY(-30deg) translateX(200px) translateZ(-300px) scale(0.6);
+        }
+
+        .small {
+            z-index: -1;
+            transform: rotateY(0deg) translateX(0) translateZ(0px) scale(0.6);
+            -webkit-transform: rotateY(0deg) translateX(0) translateZ(0px) scale(0.6);
+            -moz-transform: rotateY(0deg) translateX(0) translateZ(0px) scale(0.6);
+            -ms-transform: rotateY(0deg) translateX(0) translateZ(0px) scale(0.6);
+            -o-transform: rotateY(0deg) translateX(0) translateZ(0px) scale(0.6);
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li class="left" data-i="0"></li>
+    <li class="big"></li>
+    <li class="right"></li>
+    <li class="small"></li>
+    <li class="small"></li>
+    <li class="small"></li>
+    <li class="small"></li>
+    <li class="small"></li>
+    <li class="small" data-i="1"></li>
+</ul>
+</body>
+</html>
+<script src="jquery-2.1.4.js"></script>
+<script>
+    $("ul>li").on("click", function () {
+        $("ul>li").attr("class", "small");
+        $(this).attr("class", "big");
+        $(this).prev().attr("class", "left");
+        $(this).next().attr("class", "right");
+        if ($(this).data("i") == 0) {
+            $("ul>li").attr("class", "small");
+            $(this).attr("class", "big");
+            $(this).next().attr("class", "right");
+            $("ul>li").eq($("ul>li").length - 1).attr("class", "left");
+        }
+        if ($(this).data("i") == 1) {
+            $("ul>li").attr("class", "small");
+            $(this).attr("class", "big");
+            $(this).prev().attr("class", "left");
+            $("ul>li").eq(0).attr("class", "right");
+        }
+    });
+</script>
